@@ -1,0 +1,27 @@
+# Name: Janet Lovera 
+# Date: 10/10/2019
+# Link to video: https://youtu.be/mPnN1_uxm8U\
+# Goal: To practice using the "for" loop by having Sparki draw a flower with petals. 
+
+from sparki_learning import *  # Connects the Sparki robot 
+init("COM5")                   #     to my computer
+
+for petals in range(0, 4):     # The "for" loop that creates the petals on the flower, the range indicates that the flower will have 4 petals 
+    beep()                     # Audible "beep" that sounds at the beginning of each petal
+    LCDprint(petals + 1)       # Will physically display on Sparki's LED screen the petal number being created 
+    turnBy(30)                 # Turns Sparki 30 degrees (the user will need to input the appropriate marker/pencil to see Sparki's creation)
+    forward(1, 1)              # Moves Sparki forward 1 inch for 1 second for first side of the petal 
+    turnBy(95)                 # Turns Sparki 95 degrees 
+    motors(1, 0, 2)            # Has Sparki rotate on the left motor for 2 seconds to create the top curve of the petal 
+    turnBy(95)                 # Turns Sparki 95 degrees again 
+    forward(1, 1.05)           # Has Sparki move forward 1.05 inches for 1 second to create second side of the petal and connects the petal to center of the flower 
+    LCDclear()                 # Clears the LED screen to display the next petal number when prompted again in command
+      
+turnBy(25)                     # Turns Sparki 25 degrees 
+
+stem = ask("How long do you want the stem to be?")  # Asks user to input the length of the flower stem for Sparki to draw using computer 
+stem = int(stem)               # Stores length given from user into "stem" variable to use when prompted later in the code 
+
+turnBy(45)                     # Turns Sparki by 45 degrees 
+
+motors( 0, 1, stem)            # Moves Sparki forward the "stem" amount entered earlier by user using the right motor to create the curve 
