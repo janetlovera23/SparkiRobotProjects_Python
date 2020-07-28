@@ -1,0 +1,52 @@
+# Name: Janet Lovera 
+# Date: 10/31/2019 
+# Link to Video: https://youtu.be/VvcYTzeZ0Qk
+# Goal: To practice the use of functions by having Sparki dectect and run away from "monsters." A Halloween-themed project! 
+
+from sparki_learning import *  # Connects the Sparki robot 
+init("COM5")                   #     to my computer 
+
+def detectObstacle():          # Function that returns True if it finds an obstacle within 10 cm 
+    obstacleThreshold = 10     #         and returns False if it does not
+    foundObstacle = False 
+    
+    distance = ping()          # Pings when obstacle is detected within the range 
+    if distance > -1 and distance < 10: #Checks for obstacles -- and if finds one 
+        foundObstacle = True            #      sets foundObstacle to True
+        
+    return foundObstacle       # Returns foundObstacle when True 
+
+def getBrightest():            # Function returns a list of the 3 brightness sensors 
+    left,center,right = getBright()     
+    brightest = "center"       # Default to center sensor       
+
+    if left > center and left > right: # if-elif statements that tests which sensor is the 
+        brightest = "left"             #         the brightest and returns it 
+    elif right > center and right > left:   
+        brightest = "right"
+    
+    return brightest                    
+    
+def run():                     # 
+    beep()
+    turnBy(90)
+    forward(1)
+    speak("Ah! I'm scared!") 
+
+def roam():
+    forward(1) 
+
+def main():
+    obstaclesFound = 0
+    maxObstaclesFound = 3
+    
+    while obstaclesFound < 3:
+        roam()
+        if detectObstacle() == True:
+            run()
+            obstaclesFound = obstaclesFound+1
+    
+    print("I found " + str(obstaclesFound) + " obstacles. All done.")
+    stop()
+    
+main()  
