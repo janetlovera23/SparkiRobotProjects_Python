@@ -27,16 +27,16 @@ def getBrightest():            # Function returns a list of the 3 brightness sen
     
     return brightest                    
     
-def run():                     # 
-    beep()
+def run():                     # Function for when obstacle is detected, Sparki responds
+    beep()                     #          with fear and "flees" from obstacle 
     turnBy(90)
     forward(1)
-    speak("Ah! I'm scared!") 
+    speak("Ah! I'm scared!")   
 
-def roam():
-    forward(1) 
+def roam():                    # Function that moves Sparki until an obstacle is detected 
+    forward(1)                 
 
-def main():
+def main():                    # Main Function 
     obstaclesFound = 0
     maxObstaclesFound = 3
     
@@ -49,4 +49,5 @@ def main():
     print("I found " + str(obstaclesFound) + " obstacles. All done.")
     stop()
     
-main()  
+main()                       # Returns to Main Function 
+ 
